@@ -87,7 +87,18 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        $eventId = $this->user->event()->find($event);
+
+        if (!$eventId)
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Event with id ' . $event . ' cannot be found',
+            ], 400);
+        }
+
+        return $eventId;
+
     }
 
     /**

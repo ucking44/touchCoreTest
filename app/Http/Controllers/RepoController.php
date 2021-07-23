@@ -99,7 +99,17 @@ class RepoController extends Controller
      */
     public function show(Repo $repo)
     {
-        //
+        $repoID = $this->user->repo()->find($repo);
+
+        if (!$repoID)
+        {
+            return response()->json([
+                'success' => false,
+                'message' => 'Repo with id ' . $repo . ' cannot be found',
+            ], 400);
+        }
+
+        return $repoID;
     }
 
     /**
