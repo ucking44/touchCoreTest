@@ -30,11 +30,13 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('user', [AuthApiController::class, 'getAuthUser']);
 
     Route::get('all-events', [EventController::class, 'index']);
+    Route::get('event/{id}', [EventController::class, 'show']);
     Route::post('events', [EventController::class, 'store']);
     Route::put('update-event/{id}', [EventController::class, 'update']);
     Route::delete('delete-event/{id}', [EventController::class, 'destroy']);
 
     Route::get('all-repos', [RepoController::class, 'index']);
+    Route::get('repo/{id}', [RepoController::class, 'show']);
     Route::post('repos/{id}', [RepoController::class, 'store']);
     Route::put('update-repo/{id}', [RepoController::class, 'update']);
     Route::delete('delete-repo/{id}', [RepoController::class, 'destroy']);
